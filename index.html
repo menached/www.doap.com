@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover">
-    <meta name="description" content="Find medical and recreational marijuana dispensaries, brands, deliveries, deals and doctors near you.">
+    <meta name="description" content="Find medical and recreational marijuana dispensaries, brands, deliveries, deals, and doctors near you.">
+
+    <meta property="og:title" content="The Doap Cannabis Directory" />
+    <meta property="og:description" content="Find medical and recreational marijuana dispensaries, brands, deliveries, deals, and doctors near you." />
+    <meta property="og:image" content="https://www.doap.com/doap-og-banner2.webp" />
+    <meta property="og:url" content="https://www.doap.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.doap.com/doap-og-banner2.webp" />
+
     <title>The Doap Cannabis Directory - 833-289-3627</title>
     <link rel="apple-touch-icon" href="https://www.doap.com/doap-square-180x180.png">
     <link rel="canonical" href="https://www.doap.com/">
@@ -17,14 +29,20 @@
     </script>
     <style>
         body {
-            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #f4f4f4;
+            background-color: #ffffff;
+            color: #333;
         }
         .container {
+            max-width: 1200px;
+            margin: auto;
             padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: linear-gradient(white, #f0f0f0);
         }
         .logo img {
             max-width: 100%;
@@ -32,18 +50,45 @@
         }
         .contact-info, .totd {
             margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #555;
         }
         .buttonsubmit {
-            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #000;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
-        input[type="text"] {
+        .buttonsubmit:hover {
+            background-color: #333;
+        }
+        input[type="text"], input[type="checkbox"] {
             padding: 10px;
-            margin-top: 5px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: calc(100% - 22px);
+        }
+        #message {
+            margin-top: 10px;
+            font-size: 1.2rem;
         }
         /* Responsive Styles */
         @media only screen and (max-width: 600px) {
             body {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -51,7 +96,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <a title="Click here for a list of delivery services in your area." href="https://www.doap.com" target="_self">
+            <a title="Click here for a list of delivery services in your area." href="https://www.doap.com">
                 <img src="https://www.doap.com/doap-logo-wording.png" alt="Doap Inc">
             </a>
         </div>
@@ -62,8 +107,10 @@
         <div>
             <input type="checkbox" id="agecheck" checked>
             <label for="agecheck">21 or older?</label><br>
-            <input type="text" placeholder="ZIP Code" id="userZip" size="7">
-            <button class="buttonsubmit" onclick="checkZip()">Start Shopping!</button>
+            <form id="zip-form">
+                <input type="text" placeholder="ZIP Code" id="userZip">
+                <button class="buttonsubmit" type="submit">Start Shopping!</button>
+            </form>
             <p id="message"></p>
         </div>
         <div style="padding: 20px;">
@@ -78,3 +125,4 @@
     <script src="https://www.doap.com/app.js"></script>
 </body>
 </html>
+

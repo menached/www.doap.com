@@ -18,24 +18,39 @@ let zipData = [
 ];
 
 function checkZip(){
-  let userZip = document.getElementById('userZip').value;
-  let messageElement = document.getElementById('message');
-  let url;
-  
-  for(let city of zipData){
-     if(city.zip.includes(+userZip)){
-        url = city.url;
-        break;
-     }
-  }
+    let userZip = document.getElementById('userZip').value.trim();
+    let messageElement = document.getElementById('message');
+    let url = '';
+    
+    console.log('Entered ZIP:', userZip);  // Debugging
+    
+    // Check if input is a valid ZIP code
+    if (!/^\d{5}$/.test(userZip)) {
+        messageElement.innerHTML = "Please enter a valid 5-digit ZIP code.";
+        messageElement.style.color = "red";
+        return;
+    }
 
-  if(url){
-    window.location.href = url;
-  } else {
-    messageElement.innerText = "No matching zip code found. <br>Call 833-BUY-DOAP for help locating a doap agency near you!";
-  }
+    // Convert the input zip code to an integer and check if it's in any of the zip lists
+    for(let city of zipData){
+        if(city.zip.includes(parseInt(userZip, 10))){
+            url = city.url;
+            console.log('Matching city found:', city.city);  // Debugging
+            break;
+        }
+    }
+
+    if(url){
+        window.location.href = url;  // Redirect if a match is found
+    } else {
+        messageElement.innerHTML = "No agencies in that area.";
+        messageElement.style.color = "red";
+        console.log('No matching city found.');  // Debugging
+    }
 }
 
-function gotoDisney() {
-    window.location.href = "https://www.disney.com";
-}
+document.getElementById('zip-form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent form from submitting
+    checkZip();  // Call the zip code check function
+});
+
