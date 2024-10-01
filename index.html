@@ -50,7 +50,7 @@
         </div>
         <div>
             <form id="zip-form">
-                <input type="text" placeholder="ZIP Code" id="userZip" required>
+                <input type="text" placeholder="Enter ZIP Code or City/Town" id="userInput" required>
                 <input type="checkbox" id="agecheck" checked>
                 <label for="agecheck" id="agecheck-label">Yes, I'm 21</label>
                 <button class="buttonsubmit" type="submit">Start Shopping!</button>
@@ -70,10 +70,10 @@
     <script>
         document.getElementById('zip-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting in the default way
-            var zipCode = document.getElementById('userZip').value.trim();
+            var userInput = document.getElementById('userInput').value.trim().toLowerCase();
             var message = document.getElementById('message');
 
-            // List of valid ZIP codes and corresponding URLs
+            // List of valid ZIP codes, city names, and corresponding URLs
             let zipData = [
                 { zip: [94507], city: "Alamo", url: "https://alamo.doap.com" },
                 { zip: [94002, 94005, 94010, 94011, 94014, 94015, 94019, 94022, 94025, 94027, 94028, 94030, 94038, 94044, 94061, 94062, 94063, 94065, 94066, 94070, 94080, 94112, 94128, 94134, 94301, 94401, 94402, 94403, 94404], city: "Burlingame", url: "https://burlingame.doap.com" },
@@ -92,17 +92,18 @@
                 { zip: [94598, 94595, 94596, 94575, 94556, 94806, 94803, 94805, 94564, 94572, 94801, 94804, 94850, 94547, 94553, 94530, 94707, 94708, 94920], city: "Walnut Creek", url: "https://walnutcreek.doap.com" }
             ];
 
+            // Check if the input is a valid ZIP code or city name
             let found = false;
-            for(let city of zipData) {
-                if(city.zip.includes(parseInt(zipCode))) {
-                    window.location.href = city.url;
+            for (let cityData of zipData) {
+                if (cityData.zip.includes(parseInt(userInput)) || cityData.city.toLowerCase() === userInput) {
+                    window.location.href = cityData.url;
                     found = true;
                     break;
                 }
             }
 
-            if(!found) {
-                message.textContent = "None found";
+            if (!found) {
+                message.textContent = "No match found for that ZIP code or city.";
                 message.style.color = "red";
             }
         });
