@@ -1,17 +1,8 @@
-# Ignore everything in the root except the "wp-content" directory
-/*
-!.gitignore
-!wp-content/
-
-# Ignore everything in the "wp-content" directory except the "themes" and "plugins" directories
-wp-content/*
-!wp-content/themes/
-!wp-content/plugins/
-
-# Ignore all files with certain extensions
-*.log
-*.swp
-
-# Ignore certain directories
-cache/
-uploads/
+/*                                  # Ignore everything
+!index.html                         # Allow index.html
+!readme.html                        # Allow readme.html
+!sitemap.xml                        # Allow sitemap.xml
+!sitemap.html                       # Allow sitemap.html
+!.gitignore                         # Allow .gitignore
+.github/*                           # Ignore everything in .github
+!.github/workflows/                 # Allow the workflows directory
