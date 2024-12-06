@@ -1,8 +1,9 @@
 /*                                  # Ignore everything
-!index.html                         # Allow index.html
-!readme.html                        # Allow readme.html
-!sitemap.xml                        # Allow sitemap.xml
-!sitemap.html                       # Allow sitemap.html
-!.gitignore                         # Allow .gitignore
-.github/*                           # Ignore everything in .github
-!.github/workflows/                 # Allow the workflows directory
+!index.html                         
+!readme.html                        
+!style.css                          
+!sitemap.xml                        
+!sitemap.html                       
+!.gitignore                         
+.github/*                           
+!.github/workflows/                
